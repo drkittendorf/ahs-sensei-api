@@ -37,13 +37,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void createUser(@PathVariable Long id, @RequestBody User user) {
         Optional<User> userOptional = userRepo.findById(id);
-        System.out.println(userOptional);
         if (userOptional.isPresent()) {
             user.setUserId(id);
             userRepo.save(user);
         }
-//        user.setUserId(id);
-//        userRepo.save(user);
     }
 
     @DeleteMapping("/user/{id}")
